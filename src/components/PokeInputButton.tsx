@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { PokeInputButtonProps } from "../model/PokeInputButton.props";
+import "./PokeInputButton.css";
 
 const PokeInputButton: FC<PokeInputButtonProps> = (props) => {
   const getButtonClassName = (pokemonName: string) => {
@@ -21,7 +22,7 @@ const PokeInputButton: FC<PokeInputButtonProps> = (props) => {
       type="button"
       onClick={props.pokemonClickHandler}
       disabled={props.disabled}
-      className={getButtonClassName(props.value)}
+      className={`button ${getButtonClassName(props.value)}`}
       value={props.value}
     />
   );

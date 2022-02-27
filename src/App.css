@@ -1,0 +1,39 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.app-container {
+  max-width: 80rem;
+  margin: 5rem auto 0;
+}
+
+.app-score {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.app-title {
+  text-align: center;
+}
+
+.button {
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:not(:disabled) {
+  cursor: pointer;
+}
+
+.button:not(:disabled):hover {
+  filter: brightness(0.95);
+}

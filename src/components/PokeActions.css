@@ -1,0 +1,10 @@
+.poke-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.poke-action {
+  padding: 1rem 3rem;
+  min-width: 10rem;
+}

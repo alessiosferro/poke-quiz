@@ -1,0 +1,1 @@
+export type ScoreReducerAction = 'INCREMENT_SCORE' | 'RESET_SCORE';

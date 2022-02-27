@@ -1,23 +1,32 @@
 .pokemon-grid-container {
   display: grid;
+  gap: 1.2rem;
+
   grid-template:
-    "a b"
-    "c d";
+    "a"
+    "b"
+    "c"
+    "d";
 }
 
-.pokemon-grid-container__button {
-  padding: 1rem;
+.pokemon-loading,
+.pokemon-answer-feedback {
+  font-size: 2rem;
+  text-align: center;
 }
 
-.pokemon-grid-container__button--invalid,
-.pokemon-grid-container__button--valid {
-  color: white;
+.pokemon-loading {
+  margin: 10rem 0;
 }
 
-.pokemon-grid-container__button--invalid {
-  background-color: red;
+.pokemon-answer-feedback {
+  margin: 5rem 0;
 }
 
-.pokemon-grid-container__button--valid {
-  background-color: green;
+@media only screen and (min-width: 1024px) {
+  .pokemon-grid-container {
+    grid-template:
+      "a b"
+      "c d";
+  }
 }
