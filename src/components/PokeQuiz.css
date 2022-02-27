@@ -1,0 +1,23 @@
+.pokemon-grid-container {
+  display: grid;
+  grid-template:
+    "a b"
+    "c d";
+}
+
+.pokemon-grid-container__button {
+  padding: 1rem;
+}
+
+.pokemon-grid-container__button--invalid,
+.pokemon-grid-container__button--valid {
+  color: white;
+}
+
+.pokemon-grid-container__button--invalid {
+  background-color: red;
+}
+
+.pokemon-grid-container__button--valid {
+  background-color: green;
+}
