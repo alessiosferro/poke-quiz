@@ -1,3 +1,3 @@
-export const getRandomNumber = ({ range = 850 } = { range: 850 }) => {
+export const getRandomNumber = (range: number) => {
   return Math.floor(Math.random() * range);
 };

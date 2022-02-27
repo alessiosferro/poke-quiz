@@ -34,7 +34,7 @@ export const usePokemonChoices = () => {
     }
 
     return [pokemonA.data, pokemonB.data, pokemonC.data, pokemonD.data][
-      getRandomNumber({ range: 4 })
+      getRandomNumber(4)
     ];
   }, [pokemonA.data, pokemonB.data, pokemonC.data, pokemonD.data]);
 
