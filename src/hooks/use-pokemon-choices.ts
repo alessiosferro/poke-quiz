@@ -48,6 +48,7 @@ export const usePokemonChoices = () => {
 
   return {
     getRandomPokemons,
+    setPreviousChoices,
     answer,
     pokemonNames,
     pokemonA: pokemonA.data,

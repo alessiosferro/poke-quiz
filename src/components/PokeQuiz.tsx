@@ -18,10 +18,11 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
     pokemonC,
     pokemonD,
     pokemonNames,
+    setPreviousChoices,
     getRandomPokemons,
   } = usePokemonChoices();
 
-  const resetHandler = () => {
+  const continueHandler = () => {
     setSubmittedAnswer("");
     setIsWrongAnswer(false);
     getRandomPokemons();
@@ -30,6 +31,7 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
   const restartHandler = () => {
     setSubmittedAnswer("");
     setIsWrongAnswer(false);
+    setPreviousChoices([]);
     props.dispatch("RESET_SCORE");
     getRandomPokemons();
   };
@@ -82,7 +84,7 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
       {submittedAnswer && (
         <PokeActions
           isWrongAnswer={isWrongAnswer}
-          resetHandler={resetHandler}
+          continueHandler={continueHandler}
           restartHandler={restartHandler}
         />
       )}

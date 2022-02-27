@@ -6,7 +6,7 @@ const PokeActions: FC<PokeActionsProps> = (props) => {
   return (
     <div className="poke-actions">
       {!props.isWrongAnswer && (
-        <button className="button poke-action" onClick={props.resetHandler}>
+        <button className="button poke-action" onClick={props.continueHandler}>
           Continua
         </button>
       )}
