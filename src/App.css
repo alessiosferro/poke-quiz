@@ -13,7 +13,7 @@ body {
 
 .app-score {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .app-title {
@@ -36,4 +36,16 @@ body {
 
 .button:not(:disabled):hover {
   filter: brightness(0.95);
+}
+
+.footer-credits {
+  text-align: center;
+}
+
+.text-error {
+  color: #cf000f;
+}
+
+.text-success {
+  color: #009944;
 }

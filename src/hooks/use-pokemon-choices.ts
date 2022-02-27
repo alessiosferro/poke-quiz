@@ -1,32 +1,21 @@
-import { useReducer, useMemo } from "react";
+import { useReducer, useMemo, useState, useEffect } from "react";
 import { getPokemonChoices, getRandomNumber } from "../utils";
 import { usePokemon } from "./use-pokemon";
 
+const initialChoices = getPokemonChoices([]);
+
 export const usePokemonChoices = () => {
+  const [previousChoices, setPreviousChoices] = useState<number[]>([]);
+
   const [choices, getRandomPokemons] = useReducer(
-    () => getPokemonChoices(),
-    getPokemonChoices()
+    () => getPokemonChoices(previousChoices),
+    initialChoices
   );
 
-  const pokemonA = usePokemon({
-    pokemonId: choices.A,
-    choice: "A",
-  });
-
-  const pokemonB = usePokemon({
-    pokemonId: choices.B,
-    choice: "B",
-  });
-
-  const pokemonC = usePokemon({
-    pokemonId: choices.C,
-    choice: "C",
-  });
-
-  const pokemonD = usePokemon({
-    pokemonId: choices.D,
-    choice: "D",
-  });
+  const pokemonA = usePokemon(choices.A);
+  const pokemonB = usePokemon(choices.B);
+  const pokemonC = usePokemon(choices.C);
+  const pokemonD = usePokemon(choices.D);
 
   const answer = useMemo(() => {
     if (!pokemonA.data || !pokemonB.data || !pokemonC.data || !pokemonD.data) {
@@ -37,6 +26,11 @@ export const usePokemonChoices = () => {
       getRandomNumber(4)
     ];
   }, [pokemonA.data, pokemonB.data, pokemonC.data, pokemonD.data]);
+
+  useEffect(() => {
+    if (!answer) return;
+    setPreviousChoices(choices => ([...choices, answer.id]));
+  }, [answer]);
 
   const pokemonNames = useMemo(() => {
     if (!pokemonA.data || !pokemonB.data || !pokemonC.data || !pokemonD.data) {

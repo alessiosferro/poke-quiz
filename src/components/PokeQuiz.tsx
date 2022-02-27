@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "./PokeQuiz.css";
 import { useState } from "react";
 import PokeInputButton from "./PokeInputButton";
@@ -8,7 +8,7 @@ import PokeActions from "./PokeActions";
 import { PokeQuizProps } from "../model/PokeQuizProps";
 
 const PokeQuiz: FC<PokeQuizProps> = (props) => {
-  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
+  const [submittedAnswer, setSubmittedAnswer] = useState("");
   const [isWrongAnswer, setIsWrongAnswer] = useState(false);
 
   const {
@@ -22,13 +22,13 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
   } = usePokemonChoices();
 
   const resetHandler = () => {
-    setIsAnswerSubmitted(false);
+    setSubmittedAnswer("");
     setIsWrongAnswer(false);
     getRandomPokemons();
   };
 
   const restartHandler = () => {
-    setIsAnswerSubmitted(false);
+    setSubmittedAnswer("");
     setIsWrongAnswer(false);
     props.dispatch("RESET_SCORE");
     getRandomPokemons();
@@ -41,7 +41,7 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
       setIsWrongAnswer(true);
     }
 
-    setIsAnswerSubmitted(true);
+    setSubmittedAnswer(name);
   };
 
   if (!answer || !pokemonA || !pokemonB || !pokemonC || !pokemonD) {
@@ -52,28 +52,34 @@ const PokeQuiz: FC<PokeQuizProps> = (props) => {
     <>
       <PokeImage src={answer.sprites.front_default} />
 
-      <div className="pokemon-grid-container">
-        {pokemonNames.map((name) => (
-          <PokeInputButton
-            key={name}
-            pokemonClickHandler={() => clickHandler(name)}
-            disabled={isAnswerSubmitted}
-            answerName={answer.name}
-            value={name}
-          />
-        ))}
-      </div>
+      {!submittedAnswer && (
+        <div className="pokemon-grid-container">
+          {pokemonNames.map((name) => (
+            <PokeInputButton
+              key={name}
+              pokemonClickHandler={() => clickHandler(name)}
+              disabled={submittedAnswer.length > 0}
+              answerName={answer.name}
+              value={name}
+            />
+          ))}
+        </div>
+      )}
 
-      {isAnswerSubmitted &&
+      {submittedAnswer &&
         (isWrongAnswer ? (
-          <p className="pokemon-answer-feedback">Hai perso!</p>
+          <p className="pokemon-answer-feedback">
+            Hai perso! <br /> <br /> Hai selezionato{" "}
+            <em className="text-error">{submittedAnswer}</em>. <br /> Il nome
+            corretto era <em className="text-success">{answer.name}</em>.
+          </p>
         ) : (
           <p className="pokemon-answer-feedback">
             Complimenti, hai indovinato!
           </p>
         ))}
 
-      {isAnswerSubmitted && (
+      {submittedAnswer && (
         <PokeActions
           isWrongAnswer={isWrongAnswer}
           resetHandler={resetHandler}

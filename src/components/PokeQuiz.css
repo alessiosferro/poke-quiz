@@ -7,6 +7,8 @@
     "b"
     "c"
     "d";
+
+  padding-bottom: 10rem;
 }
 
 .pokemon-loading,
@@ -20,7 +22,7 @@
 }
 
 .pokemon-answer-feedback {
-  margin: 5rem 0;
+  margin: 2rem 0 4rem;
 }
 
 @media only screen and (min-width: 1024px) {

@@ -1,11 +1,10 @@
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import {IPokemon} from '../model/Pokemon.model';
-import { UsePokemonProps } from '../model/UsePokemon.props';
 
-export const usePokemon = ({ pokemonId, choice }: UsePokemonProps) => {
+export const usePokemon = (pokemonId: number) => {
 	return useQuery<IPokemon>(
-		["pokemon", { id: pokemonId, choice }],
+		["pokemon", pokemonId],
 		async ({ signal }) => {
 			const response = await axios.get(
 				`https://pokeapi.co/api/v2/pokemon/${pokemonId}`,

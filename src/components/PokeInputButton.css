@@ -1,18 +1,5 @@
-.pokemon-grid-container__button {
+.poke-button {
   padding: 1.5rem;
   font-size: 2rem;
   text-transform: capitalize;
-}
-
-.pokemon-grid-container__button--invalid,
-.pokemon-grid-container__button--valid {
-  color: white;
-}
-
-.pokemon-grid-container__button--invalid {
-  background-color: #cf000f;
-}
-
-.pokemon-grid-container__button--valid {
-  background-color: #009944;
 }
